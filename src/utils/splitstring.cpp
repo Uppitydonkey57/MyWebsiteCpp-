@@ -23,6 +23,9 @@ namespace Utils {
 		if (split_vec.size() == 0) {
 			split_vec.push_back(split);
 		}
+		else {
+			split_vec.push_back(temp);
+		}
 
 		return split_vec;
 	}

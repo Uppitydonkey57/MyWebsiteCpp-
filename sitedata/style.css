@@ -1,3 +1,9 @@
 .test {
-	color: purple;
+	color: white;
+}
+body {
+	background-color: grey;
+	background-image: url('res/CATAH.jpg');
+}
+p {
 }

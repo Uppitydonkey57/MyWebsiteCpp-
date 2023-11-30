@@ -24,8 +24,8 @@ namespace Server {
 		std::string content_type;
 	} ExtensionMapping;
 
-	const std::string file_path = "../sitedata/";
-	const std::string not_found_path = "../sitedata/404.html";
+	const std::string file_path = "../sitedata";
+	const std::string not_found_path = "/404error.html";
 	const ExtensionMapping extension_maps[] = { ExtensionMapping("html", std::ifstream::in, "text/html"), 
 												ExtensionMapping("css", std::ifstream::in, "text/css"),
 												ExtensionMapping("js", std::ifstream::in, "text/js"),

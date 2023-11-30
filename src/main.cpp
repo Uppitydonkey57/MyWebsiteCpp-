@@ -92,19 +92,22 @@ namespace Server {
 		std::string convert_request = convert_link(link_map, parsed_request, conversion_succesful);
 		std::unique_ptr<ResponseData> response;
 		bool response_generation_succesful = false;
-		std::cout << parsed_request << " " << conversion_succesful << std::endl;
-		if (conversion_succesful == false) {
+		std::cout << convert_request << " " << conversion_succesful << std::endl;
+		if (conversion_succesful == true) {
 			response = generate_response(convert_request, response_generation_succesful);
 		}
 		else {
 			response = generate_response(parsed_request, response_generation_succesful);
 		}
 		if (!response_generation_succesful) {
-			std::cerr << "Couldn't generate response: " << parsed_request << std::endl;
+			std::cerr << "Couldn't generate response: " << convert_request << std::endl;
 			return;
 		}
 		size_t response_size;
+		printf("test1");
 		std::unique_ptr<char[]> final_response = generate_response_text(*response, std::string("HTTP/1.0 200 OK\r\n"), response_size);
+		printf("test2");
+		printf("%s", final_response.get());
 		send(destination_socket, final_response.get(), (int)response_size, 0);
 	}
 }
