@@ -12,7 +12,7 @@
 #include "response.h"
 #include "utils/splitstring.h"
 
-#define PORT 8080
+#define PORT 80
 
 int main(int argc, char const* argv[])
 {
@@ -71,8 +71,6 @@ int main(int argc, char const* argv[])
 			"Server: webserver-c\r\n"
 			"Content-type: text/html\r\n\r\n";
 		full_message.append(hello);
-		//send(new_socket, full_message.c_str(), full_message.size(), 0);
-		std::cout << full_message << std::endl;
 		Server::handle_request(std::string(buffer), name_to_link, server_fd, new_socket);
 		// closing the connected socket
 		close(new_socket);
@@ -104,9 +102,7 @@ namespace Server {
 			return;
 		}
 		size_t response_size;
-		printf("test1");
 		std::unique_ptr<char[]> final_response = generate_response_text(*response, std::string("HTTP/1.0 200 OK\r\n"), response_size);
-		printf("test2");
 		printf("%s", final_response.get());
 		send(destination_socket, final_response.get(), (int)response_size, 0);
 	}

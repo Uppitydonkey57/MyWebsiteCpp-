@@ -1,3 +1,3 @@
 function thing() {
-	alert("HI")
+	alert("HI :)")
 }
